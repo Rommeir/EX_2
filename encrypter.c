@@ -1,3 +1,4 @@
+
 #include "encrypter.h"
 #include "log_utils.h"
 #include <stdio.h>
@@ -8,6 +9,9 @@
 #include <ctype.h>
 #include "mta_crypt.h"
 #include "shared_data.h"
+#define _GNU_SOURCE
+
+
 
 #define PRINTABLE_ASCII_START 32
 #define PRINTABLE_ASCII_END 126
@@ -51,7 +55,7 @@ int generate_password_and_key(shared_data_t* shared, char* password, char* key) 
     return 1;
 }
 
-int encrypt_password(shared_data_t* shared, const char* password, const char* key, char* encrypted, unsigned int* actual_encrypted_len) {
+int encrypt_password(shared_data_t* shared,  char* password,  char* key, char* encrypted, unsigned int* actual_encrypted_len) {
     MTA_CRYPT_RET_STATUS enc_ret = MTA_encrypt(
         key, (unsigned int)shared->key_len,
         password, (unsigned int)shared->password_len,
