@@ -2,6 +2,9 @@
 #define SHARED_DATA_H
 
 #include <pthread.h>
+#include<stdbool.h>
+
+
 
 typedef struct {
     char* encrypted_password;
