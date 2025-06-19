@@ -8,7 +8,6 @@
 #include <ctype.h>
 #include "mta_crypt.h"
 #include "shared_data.h"
-
 #define PRINTABLE_ASCII_START 32
 #define PRINTABLE_ASCII_END 126
 #define DECRYPT_OUTPUT_BUFFER_MULTIPLIER 2
@@ -68,7 +67,7 @@ int handle_successful_decryption(shared_data_t* shared, int client_id, int versi
     return 0;
 }
 
-void attempt_decryption_loop(shared_data_t* shared, int client_id, int version, const char* encrypted, int len, int key_len) {
+void attempt_decryption_loop(shared_data_t* shared, int client_id, int version,  char* encrypted, int len, int key_len) {
     char* key = (char*)malloc(key_len + 1);
     char* output = (char*)malloc(len * DECRYPT_OUTPUT_BUFFER_MULTIPLIER);
     unsigned long iter = 0;
